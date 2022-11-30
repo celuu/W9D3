@@ -1,7 +1,14 @@
-class View {
-  constructor(game, el) {}
+const board = require("./../ttt_node/board.js");
 
-  setupBoard() {}
+class View {
+  constructor(game, el) {
+  }
+
+  setupBoard() {
+
+
+    
+  }
   
   bindEvents() {}
 
