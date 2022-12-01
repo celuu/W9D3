@@ -6,7 +6,7 @@ class View {
     this.el = el;
     this.setupBoard();
   }
-  
+
 
   setupBoard() {
     let unorderedList = document.createElement("ul");
@@ -15,19 +15,29 @@ class View {
         let listEle = document.createElement("li");
         unorderedList.appendChild(listEle);
         listEle.dataset.position = JSON.stringify([i,j]);
+        listEle.classList.add("away");
 
-        //Add a class to switch the colors 
-        //Add conditions once the class has changed
+        listEle.addEventListener("click", (e) => {
+          listEle.classList.add("clicked");
+          this.game.playMove(e.target.dataset.position.parse)
+        })
 
-        listEle.addEventListener("mouseover", ()=>{
-          listEle.style.backgroundColor = "orange";
+        listEle.addEventListener("mouseover", (e)=>{
+          if(e.target.getAttribute("class") !== "clicked"){
+            listEle.classList.remove("away")
+            e.target.classList.add("hover");
+          }
         })
-        listEle.addEventListener("mouseout", () => {
-          listEle.style.backgroundColor = "red";
+
+        listEle.addEventListener("mouseout", (e) => {
+          console.log(e.target.getAttribute("class"))
+          if(e.target.getAttribute("class") !== "clicked"){
+            listEle.classList.remove("hover")
+            e.target.classList.add("away");
+          }
         })
-        listEle.addEventListener("click", () => {
-          listEle.style.backgroundColor = "blue";
-        })
+
+
       }
     }
     this.el.appendChild(unorderedList)

@@ -16,3 +16,15 @@ li {
     border-width: 5px 5px 5px 5px;
     border-color: black;
 }
+
+.hover{
+    background-color: orange;
+}
+
+.away{
+    background-color: red;
+}
+
+.clicked{
+    background-color: blue;
+}
