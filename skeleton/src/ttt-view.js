@@ -17,9 +17,20 @@ class View {
         listEle.dataset.position = JSON.stringify([i,j]);
         listEle.classList.add("away");
 
+        
+
         listEle.addEventListener("click", (e) => {
           listEle.classList.add("clicked");
-          this.game.playMove(e.target.dataset.position.parse)
+          this.game.playMove(JSON.parse(e.target.dataset.position));
+          e.target.innerHTML = this.game.currentPlayer;
+          
+          if (this.game.isOver()) {
+            if (this.game.winner()) {
+              alert(`${this.game.winner()} has won!`);
+            } else {
+              alert('NO ONE WINS!');
+            }
+          }
         })
 
         listEle.addEventListener("mouseover", (e)=>{
@@ -27,6 +38,7 @@ class View {
             listEle.classList.remove("away")
             e.target.classList.add("hover");
           }
+
         })
 
         listEle.addEventListener("mouseout", (e) => {
@@ -35,6 +47,7 @@ class View {
             listEle.classList.remove("hover")
             e.target.classList.add("away");
           }
+ 
         })
 
 
