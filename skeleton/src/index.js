@@ -7,7 +7,4 @@ document.addEventListener("DOMContentLoaded", () => {
   const ele = document.getElementsByClassName("ttt")[0];
   new View(game, ele);
 
-  
-
-
 });

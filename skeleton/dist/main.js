@@ -15,7 +15,7 @@
   \**********************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("\nconst View = __webpack_require__(/*! ./ttt-view.js */ \"./src/ttt-view.js\");\nconst Game = __webpack_require__(/*! ./../ttt_node/game.js */ \"./ttt_node/game.js\");\n\ndocument.addEventListener(\"DOMContentLoaded\", () => {\n  const game = new Game();\n  const ele = document.getElementsByClassName(\"ttt\")[0];\n  new View(game, ele);\n\n  \n\n\n});\n\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("\nconst View = __webpack_require__(/*! ./ttt-view.js */ \"./src/ttt-view.js\");\nconst Game = __webpack_require__(/*! ./../ttt_node/game.js */ \"./ttt_node/game.js\");\n\ndocument.addEventListener(\"DOMContentLoaded\", () => {\n  const game = new Game();\n  const ele = document.getElementsByClassName(\"ttt\")[0];\n  new View(game, ele);\n\n});\n\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ }),
 
@@ -25,7 +25,7 @@ eval("\nconst View = __webpack_require__(/*! ./ttt-view.js */ \"./src/ttt-view.j
   \*************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("const Game = __webpack_require__(/*! ../ttt_node/game */ \"./ttt_node/game.js\");\n\nclass View {\n  constructor(game, el) {\n    this.game = game;\n    this.el = el;\n    this.setupBoard();\n  }\n\n  setupBoard() {\n    let unorderedList = document.createElement(\"ul\");\n    for(let i = 0; i < 3; i++){\n      for(let j = 0; j < 3; j++){\n        let listEle = document.createElement(\"li\");\n        unorderedList.appendChild(listEle);\n        listEle.dataset.position = JSON.stringify([i,j]);\n      }\n    }\n    this.el.appendChild(unorderedList)\n  }\n\n  bindEvents() {}\n\n  handleClick(e) {}\n\n  makeMove(square) {}\n\n}\n\nmodule.exports = View;\n\n\n//# sourceURL=webpack:///./src/ttt-view.js?");
+eval("const Game = __webpack_require__(/*! ../ttt_node/game */ \"./ttt_node/game.js\");\n\nclass View {\n  constructor(game, el) {\n    this.game = game;\n    this.el = el;\n    this.setupBoard();\n  }\n  \n\n  setupBoard() {\n    let unorderedList = document.createElement(\"ul\");\n    for(let i = 0; i < 3; i++){\n      for(let j = 0; j < 3; j++){\n        let listEle = document.createElement(\"li\");\n        unorderedList.appendChild(listEle);\n        listEle.dataset.position = JSON.stringify([i,j]);\n\n        //Add a class to switch the colors \n        //Add conditions once the class has changed\n\n        listEle.addEventListener(\"mouseover\", ()=>{\n          listEle.style.backgroundColor = \"orange\";\n        })\n        listEle.addEventListener(\"mouseout\", () => {\n          listEle.style.backgroundColor = \"red\";\n        })\n        listEle.addEventListener(\"click\", () => {\n          listEle.style.backgroundColor = \"blue\";\n        })\n      }\n    }\n    this.el.appendChild(unorderedList)\n  }\n\n  bindEvents() {\n  }\n\n\n  makeMove(square) {}\n\n}\n\nmodule.exports = View;\n\n\n//# sourceURL=webpack:///./src/ttt-view.js?");
 
 /***/ }),
 

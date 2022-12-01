@@ -6,6 +6,7 @@ class View {
     this.el = el;
     this.setupBoard();
   }
+  
 
   setupBoard() {
     let unorderedList = document.createElement("ul");
@@ -14,14 +15,27 @@ class View {
         let listEle = document.createElement("li");
         unorderedList.appendChild(listEle);
         listEle.dataset.position = JSON.stringify([i,j]);
+
+        //Add a class to switch the colors 
+        //Add conditions once the class has changed
+
+        listEle.addEventListener("mouseover", ()=>{
+          listEle.style.backgroundColor = "orange";
+        })
+        listEle.addEventListener("mouseout", () => {
+          listEle.style.backgroundColor = "red";
+        })
+        listEle.addEventListener("click", () => {
+          listEle.style.backgroundColor = "blue";
+        })
       }
     }
     this.el.appendChild(unorderedList)
   }
 
-  bindEvents() {}
+  bindEvents() {
+  }
 
-  handleClick(e) {}
 
   makeMove(square) {}
 
